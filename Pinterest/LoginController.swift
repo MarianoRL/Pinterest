@@ -5,11 +5,12 @@
 //  Created by Alumno on 28/03/19.
 //  Copyright © 2019 MarianoRL. All rights reserved.
 //
+
 import UIKit
 import Firebase
 import SwiftyGif
 
-class LofinController: UIViewController {
+class LoginViewController: UIViewController {
     private var gradient: CAGradientLayer!
     
     override func viewDidLoad() {
@@ -83,7 +84,6 @@ class LofinController: UIViewController {
         loginButton.widthAnchor.constraint(equalTo: buttonsContainerView.widthAnchor).isActive = true
         loginButton.heightAnchor.constraint(equalTo: buttonsContainerView.heightAnchor, multiplier: 1/7).isActive = true
         
-        //loginButton.titleLabel?.font = UIFont(name: "GillSans-SemiBold", size: 18)
         
         buttonsContainerView.addSubview(terms)
         
@@ -100,7 +100,6 @@ class LofinController: UIViewController {
         //constraints
         // constraints for input
         
-
         
         
         
@@ -263,37 +262,6 @@ class LofinController: UIViewController {
         return lb
     }()
     
-    @objc func handleButton(){
-        print("Hola mundo")
-        if let email = emailTextField.text, let pass = passwordTextField.text, let name = nameTextField.text{
-            print(email)
-            print(pass)
-            Auth.auth().createUser(withEmail: email, password: pass) { (data:AuthDataResult?, error) in
-                let user = data?.user
-                if error != nil {
-                    print(error.debugDescription)
-                }
-                
-                //succesful
-                let ref = Database.database().reference(fromURL: "https://pinterest-tecmi.firebaseio.com/")
-                
-                if let uid = user?.uid{
-                    
-                    let usersRef = ref.child("users").child(uid)
-                    usersRef.updateChildValues(["name" : name, "email" : email, "password": pass])
-                    
-                    //Aqui se crea
-                    let msgsRef = ref.child("message").child(uid)
-                    msgsRef.updateChildValues(["message" : "Prueba"])
-                    
-                    //Aqui se borra el child uid de message, el de "Prueba"
-                    ref.child("message").child(uid).removeValue()
-                    
-                }
-            }
-        }
-    }
-    
     @objc func handleButtonEmail(){
         print("Email")
         let email = EmailViewController()        
@@ -308,6 +276,14 @@ class LofinController: UIViewController {
         self.navigationController?.pushViewController(signin, animated: true)
     }
     
+}
+
+extension UIColor {
+    
+    convenience init(r:CGFloat, g: CGFloat, b: CGFloat) {
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+    }
+}
 }
 
 extension UIColor {
