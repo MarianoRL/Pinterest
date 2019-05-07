@@ -62,9 +62,9 @@ class EmailViewController: UIViewController {
         if let registerVal = register {
             switch registerVal {
             case .email:
-                lb.text = "¿Cual es tu correo electrónico?"
+                lb.text = "Ingresa tu correo electronico"
             case .password:
-                lb.text = "Crea tu contraseña"
+                lb.text = "Ingresa una contraseña"
             case .age:
                 lb.text = "¿Cual es tu edad?"
             }}
@@ -123,7 +123,6 @@ class EmailViewController: UIViewController {
     }()
     
     @objc func handleButton(){
-        print("Hola mundo")
 
         if let registerVal = register {
             switch registerVal {
@@ -173,6 +172,7 @@ class EmailViewController: UIViewController {
                         }
                     }
                 }
-            }}
+            }
+        }
     }
 }
