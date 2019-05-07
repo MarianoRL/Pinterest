@@ -30,7 +30,6 @@ class SplashScreen: UIViewController {
 
 extension SplashScreen: SwiftyGifDelegate {
     func gifDidStop(sender: UIImageView) {
-        print("ya")
         let login = LoginViewController()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.setRootViewController(login)
