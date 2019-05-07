@@ -148,9 +148,10 @@ class ViewController: UIViewController {
                 layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.width/2)
                 layout.minimumInteritemSpacing = 0
                 layout.minimumLineSpacing = 0
-                let collectionView:UICollectionViewController = HomeFeedCollectionViewController.init(collectionViewLayout:layout )
-                //let collectionView:UICollectionViewController = HomeFeedCollectionViewController()
-                self.navigationController?.pushViewController(collectionView, animated: true)
+                let collectionView:UICollectionViewController = HomeFeedController.init(collectionViewLayout:layout )
+                //let collectionView:UICollectionViewController = HomeFeedController()
+                self.navigationController?.pushViewController(HomeFeedController(collectionViewLayout: PinterestLayout()), animated: true)
+                                                                  
             }
         }
     }
